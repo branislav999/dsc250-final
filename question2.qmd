@@ -1,0 +1,64 @@
+---
+title: "Coding Challenge"
+subtitle: "Course DS 250"
+author: "Student Name"
+format:
+  html:
+    self-contained: true
+    page-layout: full
+    title-block-banner: true
+    toc: true
+    toc-depth: 3
+    toc-location: body
+    number-sections: false
+    html-math-method: katex
+    code-fold: true
+    code-summary: "Show the code"
+    code-overflow: wrap
+    code-copy: hover
+    code-tools:
+        source: false
+        toggle: true
+        caption: See code
+    
+---
+
+```{python}
+# Read in libraries
+import pandas as pd
+import numpy as np
+from lets_plot import *
+
+LetsPlot.setup_html()
+
+```
+
+```{python}
+# Read in the names data
+url = "https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv"
+names = pd.read_csv(url)
+```
+
+
+
+## Question 2
+
+```{python}
+problem = pd.DataFrame({"problem": ['N/A', 15, 22, 45, 31, -999, 21, 2, 0, 0, 0, 'broken', 19, 19, 36, 27, 0, np.nan, 0, 33, 42, -999]})
+
+
+problem['problem'] = pd.to_numeric(problem['problem'], errors='coerce')
+problem.replace(-999, np.nan, inplace=True)
+
+
+mean_value = problem['problem'].mean()
+
+problem['problem'].fillna(mean_value, inplace=True)
+
+
+std_dev = problem['problem'].std()
+
+print(f"Standard Deviation: {std_dev:.2f}")
+
+
+```

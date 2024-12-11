@@ -1,0 +1,66 @@
+---
+title: "Coding Challenge"
+subtitle: "Course DS 250"
+author: "Student Name"
+format:
+  html:
+    self-contained: true
+    page-layout: full
+    title-block-banner: true
+    toc: true
+    toc-depth: 3
+    toc-location: body
+    number-sections: false
+    html-math-method: katex
+    code-fold: true
+    code-summary: "Show the code"
+    code-overflow: wrap
+    code-copy: hover
+    code-tools:
+        source: false
+        toggle: true
+        caption: See code
+    
+---
+
+```{python}
+# Read in libraries
+import pandas as pd
+import numpy as np
+from lets_plot import *
+
+LetsPlot.setup_html()
+
+```
+
+```{python}
+# Read in the names data
+url = "https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv"
+names = pd.read_csv(url)
+```
+
+## Question 1:
+
+### [Replace with the text from question #]
+
+```{python}
+ann_data = names[names['name'] == 'Ann']
+
+q1 = ggplot() + \
+    geom_line(data=ann_data, mapping=aes(x='year', y='CO'), color='blue', size=1, linetype='solid', label='Colorado') + \
+    geom_line(data=ann_data, mapping=aes(x='year', y='AZ'), color='orange', size=1, linetype='solid', label='Arizona') + \
+    geom_vline(xintercept=1935, linetype='solid', color='black', size=1) + \
+    geom_vline(xintercept=1968, linetype='solid', color='black', size=1) + \
+    geom_vline(xintercept=1991, linetype='solid', color='black', size=1) + \
+    ggtitle('THe history of Ann in Colorado (blue and Arizona(orange)') + \
+    xlab('Year Born') + \
+    ylab('Count of Ann') + \
+    scale_x_continuous(limits=[1910, 2020])
+q1
+
+```
+
+
+
+
+When done with a question, render it to a `.html` file and upload it for the question. Either re-downolad this template or file -> save as -> a new file name and then replace the text in the question with the new question text.
